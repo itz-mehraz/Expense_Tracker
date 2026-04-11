@@ -1,0 +1,104 @@
+<?php
+return [
+    'app_name' => 'Expense Tracker',
+    'home_title' => 'Home',
+    'signup_title' => 'Create Account',
+    'login_title' => 'Login',
+    'dashboard_title' => 'Dashboard',
+
+    'home' => 'Home',
+    'signup' => 'Sign Up',
+    'login' => 'Login',
+    'logout' => 'Logout',
+
+    'intro' => 'Manage, analyze, and organize your daily income and expenses easily.',
+
+    'name' => 'Name',
+    'email' => 'Email',
+    'password' => 'Password',
+    'confirm_password' => 'Confirm Password',
+
+    'create_account' => 'Create Account',
+    'already_have_account' => 'Already have an account?',
+    'login_here' => 'Login here',
+    'back_home' => '← Back to Home',
+    'no_account' => 'Don’t have an account yet?',
+    'signup_here' => 'Sign up here',
+
+    'invalid_credentials' => 'Invalid email or password.',
+    'registration_success' => 'Account created successfully. Please log in now.',
+    'registration_failed' => 'Registration failed. Please try again.',
+
+    'name_required' => 'Name is required.',
+    'email_required' => 'Email is required.',
+    'valid_email' => 'Please enter a valid email.',
+    'password_required' => 'Password is required.',
+    'password_min' => 'Password must be at least 6 characters.',
+    'confirm_password_required' => 'Please confirm your password.',
+    'password_mismatch' => 'Passwords do not match.',
+    'email_exists' => 'This email is already in use.',
+
+    'welcome' => 'Welcome',
+    'welcome_back' => 'Welcome back',
+    'profile' => 'Profile',
+
+    'total_expenses' => 'Total Expenses',
+    'this_month' => 'This Month Expenses',
+    'quick_links' => 'Quick Links',
+    'add_expense' => 'Add Expense',
+    'add_income' => 'Add Income',
+    'manage_expenses' => 'Manage Transactions',
+    'manage_categories' => 'Manage Categories',
+
+    'feature_track_title' => 'Track Income & Expenses',
+    'feature_track_text' => 'Add, view, and manage your daily income and expenses easily.',
+
+    'feature_category_title' => 'Bangladesh-Based Categories',
+    'feature_category_text' => 'Use useful categories such as groceries, rent, mobile recharge, internet bill, medicine, bKash, Nagad, and more.',
+
+    'feature_summary_title' => 'View Summary',
+    'feature_summary_text' => 'Check total income, total expenses, and monthly summary easily.',
+
+    'project_footer' => 'Final Project - Income and Expense Tracker System',
+
+    'search_expenses' => 'Search Transactions',
+    'search' => 'Search',
+    'reset' => 'Reset',
+    'all_categories' => 'All Categories',
+    'recent_expenses' => 'Recent Transactions',
+    'title' => 'Title',
+    'category' => 'Category',
+    'amount' => 'Amount',
+    'date' => 'Date',
+    'note' => 'Note',
+    'action' => 'Action',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'no_category' => 'No Category',
+    'no_expenses_yet' => 'No transactions added yet.',
+
+    'total_categories' => 'Total Categories',
+    'total_entries' => 'Total Entries',
+
+    'transaction_type' => 'Transaction Type',
+    'expense' => 'Expense',
+    'income' => 'Income',
+
+    'payment_method' => 'Payment Method',
+    'bkash' => 'bKash',
+    'nagad' => 'Nagad',
+    'cash' => 'Cash',
+    'bank' => 'Bank',
+    'card' => 'Card',
+    'other' => 'Other',
+
+    'add_transaction' => 'Add New Transaction',
+    'transaction_list' => 'Transaction List',
+    'select_category' => 'Select Category',
+    'select_type' => 'Select Type',
+    'select_payment_method' => 'Select Payment Method',
+    'save' => 'Save',
+    'cancel' => 'Cancel',
+    'update' => 'Update',
+    'delete_confirm' => 'Are you sure you want to delete this?',
+];
