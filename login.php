@@ -5,8 +5,18 @@ ini_set('display_errors', 1);
 require_once __DIR__ . '/config/app.php';
 require_once __DIR__ . '/config/db.php';
 
+$next = safe_internal_path($_GET['next'] ?? '');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $postNext = safe_internal_path($_POST['next'] ?? '');
+    if ($postNext !== '') {
+        $next = $postNext;
+    }
+}
+
 if (isset($_SESSION['user_id'])) {
-    header('Location: /expense-tracker/dashboard.php');
+    $dest = $next !== '' ? $next : '/expense-tracker/dashboard.php';
+    header('Location: ' . $dest);
     exit();
 }
 
@@ -39,7 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['user_name'] = $user['name'];
                 $_SESSION['user_email'] = $user['email'];
 
-                header('Location: /expense-tracker/dashboard.php');
+                $dest = $next !== '' ? $next : '/expense-tracker/dashboard.php';
+                header('Location: ' . $dest);
                 exit();
             }
         }
@@ -54,10 +65,10 @@ require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/navbar.php';
 ?>
 
-<div class="container page-wrapper">
+<div class="container page-wrapper auth-page">
     <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-5">
-            <div class="card border-0 shadow-lg">
+        <div class="col-md-8 col-lg-5 col-xl-4">
+            <div class="card border-0 shadow-lg auth-card">
                 <div class="card-body p-4 p-md-5">
                     <div class="text-center mb-4">
                         <span class="badge rounded-pill hero-badge mb-3">
@@ -69,6 +80,9 @@ require_once __DIR__ . '/includes/navbar.php';
                                 ? 'আপনার অ্যাকাউন্টে প্রবেশ করে খরচ ব্যবস্থাপনা শুরু করুন।'
                                 : 'Access your account and start managing your expenses.'); ?>
                         </p>
+                        <?php if ($next !== ''): ?>
+                            <p class="small soft-muted mt-2 mb-0"><?php echo e($lang['login_continue_hint']); ?></p>
+                        <?php endif; ?>
                     </div>
 
                     <?php if (isset($_SESSION['success_message'])): ?>
@@ -91,6 +105,9 @@ require_once __DIR__ . '/includes/navbar.php';
                     <?php endif; ?>
 
                     <form method="POST" novalidate>
+                        <?php if ($next !== ''): ?>
+                            <input type="hidden" name="next" value="<?php echo e($next); ?>">
+                        <?php endif; ?>
                         <div class="mb-3">
                             <label for="email" class="form-label fw-semibold">
                                 <?php echo e($lang['email']); ?>
@@ -109,16 +126,26 @@ require_once __DIR__ . '/includes/navbar.php';
                             <label for="password" class="form-label fw-semibold">
                                 <?php echo e($lang['password']); ?>
                             </label>
-                            <input
-                                type="password"
-                                id="password"
-                                name="password"
-                                class="form-control"
-                                placeholder="<?php echo e($currentLang === 'bn' ? 'আপনার পাসওয়ার্ড লিখুন' : 'Enter your password'); ?>"
-                            >
+                            <div class="input-group password-input-wrap">
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    class="form-control"
+                                    placeholder="<?php echo e($currentLang === 'bn' ? 'আপনার পাসওয়ার্ড লিখুন' : 'Enter your password'); ?>"
+                                    autocomplete="current-password"
+                                >
+                                <button
+                                    type="button"
+                                    class="btn btn-outline-secondary btn-toggle-password"
+                                    data-password-toggle="password"
+                                    data-label-show="<?php echo e($lang['password_show']); ?>"
+                                    data-label-hide="<?php echo e($lang['password_hide']); ?>"
+                                ><?php echo e($lang['password_show']); ?></button>
+                            </div>
                         </div>
 
-                        <button type="submit" class="btn btn-primary w-100 py-2">
+                        <button type="submit" class="btn btn-hero-cta w-100 py-2">
                             <?php echo e($lang['login']); ?>
                         </button>
                     </form>
@@ -126,7 +153,7 @@ require_once __DIR__ . '/includes/navbar.php';
                     <div class="text-center mt-4">
                         <p class="mb-2">
                             <?php echo e($lang['no_account']); ?>
-                            <a href="/expense-tracker/signup.php" class="fw-semibold">
+                            <a href="/expense-tracker/signup.php<?php echo $next !== '' ? '?next=' . e(rawurlencode($next)) : ''; ?>" class="fw-semibold">
                                 <?php echo e($lang['signup_here']); ?>
                             </a>
                         </p>

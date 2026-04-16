@@ -101,4 +101,10 @@ return [
     'cancel' => 'Cancel',
     'update' => 'Update',
     'delete_confirm' => 'Are you sure you want to delete this?',
+
+    'home_dashboard_preview' => 'Preview dashboard (no login)',
+    'home_visual_heading' => 'Built for daily money habits',
+    'home_visual_chart' => 'Charts & filters',
+    'home_visual_bdt' => 'Amounts in ৳ (BDT)',
+    'home_visual_lang' => 'Bangla · English',
 ];

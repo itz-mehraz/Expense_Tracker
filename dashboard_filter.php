@@ -223,17 +223,19 @@ ob_start();
         </div>
 
         <div class="collapse mt-3" id="analyticsChartCollapseAjax">
-            <?php if (($filteredIncome + $filteredExpense) > 0): ?>
-                <div class="analytics-chart-wrap">
-                    <canvas id="financePieChartAjax"></canvas>
-                </div>
-            <?php else: ?>
-                <div class="analytics-empty">
-                    <?php echo e($currentLang === 'bn'
-                        ? 'এই ফিল্টারের জন্য কোনো চার্ট ডাটা পাওয়া যায়নি।'
-                        : 'No chart data found for this filter.'); ?>
-                </div>
-            <?php endif; ?>
+            <div class="analytics-chart-layout">
+                <?php if (($filteredIncome + $filteredExpense) > 0): ?>
+                    <div class="analytics-chart-wrap">
+                        <canvas id="financePieChartAjax"></canvas>
+                    </div>
+                <?php else: ?>
+                    <div class="analytics-empty">
+                        <?php echo e($currentLang === 'bn'
+                            ? 'এই ফিল্টারের জন্য কোনো চার্ট ডাটা পাওয়া যায়নি।'
+                            : 'No chart data found for this filter.'); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>
@@ -254,7 +256,7 @@ ob_start();
         </div>
 
         <?php if (!empty($transactionRows)): ?>
-            <div class="desktop-transaction-table">
+            <div class="desktop-transaction-table table-transactions">
                 <div class="table-responsive">
                     <table class="table align-middle mb-0">
                         <thead>
