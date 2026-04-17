@@ -10,7 +10,7 @@ if ($safeNext !== '') {
 <nav class="navbar navbar-expand-lg sticky-top shadow-sm app-navbar">
     <div class="container">
         <a class="navbar-brand navbar-brand--logo-only d-flex align-items-center" href="/expense-tracker/index.php" title="<?php echo e($lang['app_name']); ?>">
-            <img src="/expense-tracker/assets/images/logo.png" alt="<?php echo e($lang['app_name']); ?>" class="navbar-logo" width="32" height="32" loading="lazy">
+            <img src="/expense-tracker/assets/images/logo.png" alt="<?php echo e($lang['app_name']); ?>" class="navbar-logo" loading="lazy">
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">

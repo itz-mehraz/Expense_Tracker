@@ -40,31 +40,22 @@ $isHomePage = basename($_SERVER['PHP_SELF'] ?? '') === 'index.php';
         </a>
     <?php endif; ?>
 </nav>
-<footer class="site-footer mt-auto d-none d-md-block">
-    <div class="container py-4 py-lg-5">
-        <div class="row g-4 align-items-start">
-            <div class="col-lg-5">
+<footer class="site-footer site-footer--compact mt-auto d-none d-md-block">
+    <div class="container py-4 py-lg-4">
+        <div class="row g-4 align-items-start justify-content-between">
+            <div class="col-md-7 col-lg-8">
                 <div class="footer-brand d-flex align-items-center gap-2 mb-2">
                     <img src="/expense-tracker/assets/images/logo.png" alt="<?php echo e($lang['app_name']); ?>" class="footer-logo" width="32" height="32" loading="lazy" title="<?php echo e($lang['app_name']); ?>">
                 </div>
-                <p class="footer-tagline mb-3"><?php echo e($lang['footer_tagline']); ?></p>
-                <p class="small soft-muted mb-0">
+                <p class="footer-tagline mb-2 mb-md-3"><?php echo e($lang['footer_tagline']); ?></p>
+                <p class="small soft-muted mb-0 footer-credit-line">
                     <?php echo e($lang['footer_made_by']); ?>
                     <span class="fw-semibold"><?php echo e($lang['footer_author']); ?></span>
-                    ·
+                    <span class="footer-dot" aria-hidden="true"> · </span>
                     <a href="<?php echo e($githubUrl); ?>" class="footer-inline-link" target="_blank" rel="noopener noreferrer"><?php echo e($lang['footer_github']); ?></a>
                 </p>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <h6 class="footer-heading"><?php echo e($lang['footer_useful_title']); ?></h6>
-                <ul class="list-unstyled small footer-notes mb-0">
-                    <li><?php echo e($lang['footer_currency_note']); ?></li>
-                    <li><?php echo e($lang['footer_timezone_note']); ?></li>
-                    <li><?php echo e($lang['footer_mobile_note']); ?></li>
-                    <li><?php echo e($lang['footer_privacy_note']); ?></li>
-                </ul>
-            </div>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-5 col-lg-3">
                 <h6 class="footer-heading"><?php echo e($lang['footer_links_title']); ?></h6>
                 <ul class="list-unstyled footer-links mb-0">
                     <li><a href="/expense-tracker/index.php"><?php echo e($lang['home']); ?></a></li>
@@ -79,9 +70,9 @@ $isHomePage = basename($_SERVER['PHP_SELF'] ?? '') === 'index.php';
                 </ul>
             </div>
         </div>
-        <hr class="footer-rule my-4">
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 small soft-muted">
-            <span>© <?php echo e($footerYear); ?> <?php echo e($lang['app_name']); ?>. <?php echo e($lang['footer_rights']); ?></span>
+        <hr class="footer-rule my-3 my-lg-4">
+        <div class="footer-bottom small soft-muted text-center text-md-start">
+            © <?php echo e($footerYear); ?> <?php echo e($lang['app_name']); ?>. <?php echo e($lang['footer_rights']); ?>
         </div>
     </div>
 </footer>
