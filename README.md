@@ -1,15 +1,19 @@
 # Expense Tracker
 
-A **session-based** PHP and MySQL web app for personal finance: record income and expenses in **Bangladeshi Taka (৳)**, manage categories, filter the dashboard, export **CSV**, and view **Chart.js** analytics. UI supports **বাংলা / English** and **light / dark** themes.
-
-**Live demo:** [https://mehraz.infinityfree.me/expense-tracker/index.php](https://mehraz.infinityfree.me/expense-tracker/index.php)
+<p align="center">
+  <strong>A clean and responsive PHP + MySQL expense tracker with Bangla / English support, light & dark mode, BDT-focused dashboard, category management, CSV export, and chart-based analytics.</strong>
+</p>
 
 <p align="center">
-  <a href="https://mehraz.infinityfree.me/expense-tracker/index.php"><img src="https://img.shields.io/badge/Live-demo-0f766e?style=flat-square" alt="Open live demo" /></a>
-  <a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-8%2B-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP 8+" /></a>
-  <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-5.7%2B-4479A1?style=flat-square&logo=mysql&logoColor=white" alt="MySQL" /></a>
-  <a href="https://getbootstrap.com/"><img src="https://img.shields.io/badge/Bootstrap-5-7952B3?style=flat-square&logo=bootstrap&logoColor=white" alt="Bootstrap 5" /></a>
-  <a href="https://www.chartjs.org/"><img src="https://img.shields.io/badge/Chart.js-4-FF6384?style=flat-square&logo=chartdotjs&logoColor=white" alt="Chart.js" /></a>
+  <a href="https://mehraz.infinityfree.me/expense-tracker/index.php"><strong>Live Demo</strong></a> •
+  <a href="https://github.com/itz-mehraz/Expense_Tracker"><strong>GitHub Repository</strong></a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/PHP-8%2B-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8+" />
+  <img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+  <img src="https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap 5" />
+  <img src="https://img.shields.io/badge/Chart.js-Analytics-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" alt="Chart.js" />
 </p>
 
 ---
