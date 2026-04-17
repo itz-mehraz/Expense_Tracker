@@ -1,128 +1,88 @@
 # Expense Tracker
 
+A **session-based** PHP and MySQL web app for personal finance: record income and expenses in **Bangladeshi Taka (৳)**, manage categories, filter the dashboard, export **CSV**, and view **Chart.js** analytics. UI supports **বাংলা / English** and **light / dark** themes.
+
+**Live demo:** [https://mehraz.infinityfree.me/expense-tracker/index.php](https://mehraz.infinityfree.me/expense-tracker/index.php)
+
 <p align="center">
-  <strong>PHP + MySQL personal finance app — বাংলা / English, light &amp; dark theme, BDT-focused dashboard, categories, CSV export, and Chart.js analytics.</strong>
+  <img src="screenshots/04-dashboard.png" alt="Dashboard — totals, chart, and filters" width="920" />
 </p>
 
 <p align="center">
-  <img src="" alt="App banner — add your screenshot here" width="min(920px, 100%)" />
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/PHP-8%2B-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP" />
-  <img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
-  <img src="https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white" alt="Bootstrap" />
-  <img src="https://img.shields.io/badge/Chart.js-Analytics-FF6384?style=for-the-badge&logo=chartdotjs&logoColor=white" alt="Chart.js" />
+  <a href="https://mehraz.infinityfree.me/expense-tracker/index.php"><img src="https://img.shields.io/badge/Live-demo-0f766e?style=flat-square" alt="Open live demo" /></a>
+  <a href="https://www.php.net/"><img src="https://img.shields.io/badge/PHP-8%2B-777BB4?style=flat-square&logo=php&logoColor=white" alt="PHP 8+" /></a>
+  <a href="https://www.mysql.com/"><img src="https://img.shields.io/badge/MySQL-5.7%2B-4479A1?style=flat-square&logo=mysql&logoColor=white" alt="MySQL" /></a>
+  <a href="https://getbootstrap.com/"><img src="https://img.shields.io/badge/Bootstrap-5-7952B3?style=flat-square&logo=bootstrap&logoColor=white" alt="Bootstrap 5" /></a>
+  <a href="https://www.chartjs.org/"><img src="https://img.shields.io/badge/Chart.js-4-FF6384?style=flat-square&logo=chartdotjs&logoColor=white" alt="Chart.js" /></a>
 </p>
 
 ---
 
-## Table of contents
+## Contents
 
-1. [Overview](#overview)
-2. [Features](#features)
-3. [Screenshots &amp; assets](#screenshots--assets)
-4. [Requirements](#requirements)
-5. [Project structure](#project-structure)
-6. [Installation (local)](#installation-local)
-7. [Database schema](#database-schema)
-8. [Configuration](#configuration)
-9. [Internationalization &amp; theme](#internationalization--theme)
-10. [Security notes](#security-notes)
-11. [Deployment notes](#deployment-notes)
-12. [Troubleshooting](#troubleshooting)
-13. [Roadmap ideas](#roadmap-ideas)
-14. [Author &amp; license](#author--license)
+- [Live demo](#live-demo)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Requirements](#requirements)
+- [Project structure](#project-structure)
+- [Installation](#installation)
+- [Database schema](#database-schema)
+- [Configuration](#configuration)
+- [i18n and themes](#i18n-and-themes)
+- [Security](#security)
+- [Deployment](#deployment)
+- [Troubleshooting](#troubleshooting)
+- [Roadmap](#roadmap)
+- [Author](#author)
 
 ---
 
-## Overview
+## Live demo
 
-This project is a **session-based** web application for recording **income** and **expenses** in **Bangladeshi Taka (৳)**. Users manage their own **categories** and **transactions**, filter lists and charts, optionally **export CSV**, and update **profile** data.
-
-**Defaults:** Bangla (`bn`) first, timezone **Asia/Dhaka** (`config/app.php`). Guests can **open the dashboard in preview mode**; adding data and exports require login.
+The app is deployed for preview at **[https://mehraz.infinityfree.me/expense-tracker/index.php](https://mehraz.infinityfree.me/expense-tracker/index.php)** (InfinityFree hosting). Use it to explore the UI; sign up or log in to try full features depending on how the host is configured.
 
 ---
 
 ## Features
 
-| Area | What it does |
-|------|----------------|
-| **Auth** | Sign up, login, logout; passwords hashed with `password_hash()` |
-| **Dashboard** | Totals, today’s summary, tip, add transaction, filterable list, doughnut chart, AJAX refresh via `dashboard_filter.php` |
-| **CSV** | `export_csv.php` — UTF-8 BOM, same GET filters as dashboard, up to 10k rows |
-| **Categories** | CRUD per user |
+| Area | Description |
+|------|-------------|
+| **Authentication** | Sign up, login, logout; passwords stored with `password_hash()` |
+| **Dashboard** | Totals, today’s summary, tips, add transaction, filters, doughnut chart; live refresh via `dashboard_filter.php` |
+| **Guest preview** | Dashboard readable without login; writes and CSV require an account |
+| **CSV export** | `export_csv.php` — UTF-8 BOM, same filters as the dashboard, capped row count |
+| **Categories** | Per-user CRUD |
 | **Profile** | Name, email, mobile, password |
-| **UI** | Bootstrap 5, custom theme in `assets/css/style.css` (imports `assets/style.css`), mobile nav bar (hidden on home), optional guest home without large footer |
+| **UI** | Bootstrap 5, custom styling in `assets/css/style.css`, mobile-friendly shell |
 
 ---
 
-## Screenshots &amp; assets
+## Screenshots
 
-**Add your own images:** set the `src` in the banner above, and in the gallery below, to a URL or a path (e.g. `screenshots/dashboard.png`). Leaving `src=""` is intentional so you can paste paths when ready.
+Image paths are **relative to the repository root** (for example `screenshots/01-home.png`). GitHub renders them from the branch you are viewing. Ensure the `screenshots/` folder and all `.png` files are **committed and pushed**; filenames must match exactly.
 
-### Recommended files (repo `screenshots/` folder)
+| Home | Login | Sign up |
+|:----:|:-----:|:-------:|
+| ![Home](screenshots/01-home.png) | ![Login](screenshots/02-login.png) | ![Sign up](screenshots/03-signup.png) |
 
-| # | Suggested filename | What to capture |
-|---|-------------------|-----------------|
-| 1 | `screenshots/01-home.png` | Landing / home (BN or EN) |
-| 2 | `screenshots/02-login.png` | Login |
-| 3 | `screenshots/03-signup.png` | Sign up |
-| 4 | `screenshots/04-dashboard.png` | Dashboard overview |
-| 5 | `screenshots/05-chart-filters.png` | Chart + filter strip |
-| 6 | `screenshots/06-transactions-mobile.png` | Mobile transaction cards |
-| 7 | `screenshots/07-categories.png` | Categories |
-| 8 | `screenshots/08-profile.png` | Profile |
-| 9 | `screenshots/09-dark-mode.png` | Same screen in dark theme |
+| Dashboard | Chart & filters | Categories |
+|:---------:|:---------------:|:----------:|
+| ![Dashboard](screenshots/04-dashboard.png) | ![Chart and filters](screenshots/05-chart-filters.png) | ![Categories](screenshots/07-categories.png) |
 
-### Gallery (replace `src=""` when you have files)
+| Profile | Mobile | Dark theme |
+|:-------:|:------:|:----------:|
+| ![Profile](screenshots/08-profile.png) | ![Mobile transactions](screenshots/06-transactions-mobile.png) | ![Dark mode](screenshots/09-dark-mode.png) |
 
-<table>
-  <tr>
-    <td align="center" width="33%">
-      <img src="" alt="Home" width="100%" /><br /><sub>Home</sub>
-    </td>
-    <td align="center" width="33%">
-      <img src="" alt="Login" width="100%" /><br /><sub>Login</sub>
-    </td>
-    <td align="center" width="33%">
-      <img src="" alt="Signup" width="100%" /><br /><sub>Signup</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="" alt="Dashboard" width="100%" /><br /><sub>Dashboard</sub>
-    </td>
-    <td align="center">
-      <img src="" alt="Chart and filters" width="100%" /><br /><sub>Chart &amp; filters</sub>
-    </td>
-    <td align="center">
-      <img src="" alt="Categories" width="100%" /><br /><sub>Categories</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="" alt="Profile" width="100%" /><br /><sub>Profile</sub>
-    </td>
-    <td align="center">
-      <img src="" alt="Mobile view" width="100%" /><br /><sub>Mobile</sub>
-    </td>
-    <td align="center">
-      <img src="" alt="Dark mode" width="100%" /><br /><sub>Dark mode</sub>
-    </td>
-  </tr>
-</table>
-
-**Logo:** place `assets/images/logo.png` (navbar + footer use it).
+**Branding:** add `assets/images/logo.png` for the navbar and footer (optional but recommended).
 
 ---
 
 ## Requirements
 
-- **PHP** 8.0+ (mysqli, session, JSON)
-- **MySQL** 5.7+ / MariaDB (InnoDB, utf8mb4)
-- **Web server** with PHP (Apache via XAMPP, nginx + php-fpm, etc.)
-- Modern browser (ES5+ for small scripts; Chart.js on dashboard)
+- **PHP** 8.0+ (`mysqli`, sessions, JSON)
+- **MySQL** 5.7+ or **MariaDB** (InnoDB, `utf8mb4`)
+- A web server that runs PHP (e.g. Apache with XAMPP, or nginx + PHP-FPM)
+- A modern browser (Chart.js on the dashboard)
 
 ---
 
@@ -131,13 +91,13 @@ This project is a **session-based** web application for recording **income** and
 ```text
 expense-tracker/
 ├── assets/
-│   ├── css/style.css      # Theme overrides + imports ../style.css
-│   ├── style.css          # Base layout & components
-│   ├── js/app.js          # e.g. password visibility toggle
-│   └── images/logo.png    # Brand (add if missing)
+│   ├── css/style.css       # Theme + layout overrides (imports ../style.css)
+│   ├── style.css           # Base components
+│   ├── js/app.js           # Small UI helpers
+│   └── images/logo.png     # Brand asset (optional)
 ├── config/
-│   ├── app.php            # Session, lang, theme, helpers, merged UI strings
-│   └── db.php             # mysqli connection
+│   ├── app.php             # Timezone, i18n, theme, helpers, merged strings
+│   └── db.php              # Database connection
 ├── includes/
 │   ├── header.php
 │   ├── navbar.php
@@ -145,9 +105,10 @@ expense-tracker/
 ├── lang/
 │   ├── bn.php
 │   └── en.php
+├── screenshots/            # README / docs imagery (commit for GitHub)
 ├── categories.php
 ├── dashboard.php
-├── dashboard_filter.php   # AJAX JSON for filtered chart + table HTML
+├── dashboard_filter.php    # AJAX: filtered chart + table HTML
 ├── delete_transaction.php
 ├── edit_transaction.php
 ├── export_csv.php
@@ -161,27 +122,25 @@ expense-tracker/
 
 ---
 
-## Installation (local)
+## Installation
 
-### 1. Clone or copy the project
+### 1. Place the project
 
-Place the folder under your web root, e.g.:
+Copy or clone the folder under your web root, for example:
 
-```text
-/Applications/XAMPP/xamppfiles/htdocs/expense-tracker
-```
+`/Applications/XAMPP/xamppfiles/htdocs/expense-tracker`
 
 ### 2. Create the database
 
-Create a database named e.g. `expense_tracker` in phpMyAdmin or the MySQL CLI.
+Create a database (e.g. `expense_tracker`) in phpMyAdmin or the MySQL client.
 
-### 3. Import schema
+### 3. Import the schema
 
-Run the SQL from [Database schema](#database-schema) (below) in order: `users` → `categories` → `expenses`.
+Run the SQL in [Database schema](#database-schema) in order: `users` → `categories` → `expenses`.
 
-### 4. Configure `config/db.php`
+### 4. Configure the database
 
-Set host, user, password, database name, and port. Example for XAMPP:
+Edit `config/db.php` with host, user, password, database name, and port. XAMPP example:
 
 ```php
 <?php
@@ -200,13 +159,11 @@ if ($conn->connect_error) {
 $conn->set_charset('utf8mb4');
 ```
 
-### 5. Open in browser
+### 5. Open the app
 
-```text
-http://localhost/expense-tracker/
-```
+`http://localhost/expense-tracker/`
 
-Register a user, add categories, then add transactions on the dashboard.
+Register a user, create categories, then add transactions from the dashboard.
 
 ---
 
@@ -264,12 +221,12 @@ CREATE TABLE expenses (
 
 ## Configuration
 
-| File | Role |
-|------|------|
+| File | Purpose |
+|------|---------|
 | `config/db.php` | Database credentials only |
-| `config/app.php` | `date_default_timezone_set('Asia/Dhaka')`, language &amp; theme session keys, merged `$langExtrasEn` / `$langExtrasBn`, helpers (`e()`, `format_bdt()`, `safe_internal_path()`, …) |
+| `config/app.php` | Timezone (`Asia/Dhaka`), language and theme session keys, merged UI strings, helpers (`e()`, `format_bdt()`, `safe_internal_path()`, etc.) |
 
-**Production:** turn off in-browser PHP errors in `config/app.php` (and entry scripts) by removing or guarding:
+**Production:** avoid exposing PHP errors to visitors. Remove or guard:
 
 ```php
 error_reporting(E_ALL);
@@ -278,68 +235,67 @@ ini_set('display_errors', 1);
 
 ---
 
-## Internationalization &amp; theme
+## i18n and themes
 
-- Copy lives in `lang/bn.php` and `lang/en.php`.
-- Extra UI strings (footer, landing, tips, nav labels) merge in `config/app.php` after loading the language file.
-- Switch: `?lang=bn` / `?lang=en` and `?theme=light` / `?theme=dark` (session-backed).
+- Core copy: `lang/bn.php`, `lang/en.php`
+- Extra strings are merged in `config/app.php`
+- Switches: `?lang=bn` / `?lang=en` and `?theme=light` / `?theme=dark` (stored in session)
 
 ---
 
-## Security notes
+## Security
 
 - Passwords: `password_hash()` / `password_verify()`
-- SQL: **prepared statements** with bound parameters
-- Ownership: category and expense queries scoped by `user_id`
-- **CSV** and **AJAX filter** require an authenticated session
-- `safe_internal_path()` restricts `?next=` redirects to paths under `/expense-tracker/`
+- SQL: prepared statements with bound parameters
+- Data access scoped by `user_id` for categories and expenses
+- Sensitive endpoints (e.g. CSV, filtered dashboard data for logged-in views) require an authenticated session where applicable
+- `safe_internal_path()` limits `?next=` redirects to internal paths under `/expense-tracker/`
 
 ---
 
-## Deployment notes
+## Deployment
 
-1. Upload files to the host document root (or subdirectory).
-2. Create MySQL database and import the schema.
-3. Point `config/db.php` at the host’s MySQL hostname and credentials.
-4. Ensure PHP `mysqli` and `session` are enabled.
-5. Use HTTPS in production; tighten cookie flags if you add `session.cookie_secure` etc.
+1. Upload files to the host document root or a subdirectory.
+2. Create the MySQL database and import the schema.
+3. Update `config/db.php` with production credentials.
+4. Ensure PHP extensions `mysqli` and session support are enabled.
+5. Prefer HTTPS; consider stricter session cookie flags in production.
 
 ---
 
 ## Troubleshooting
 
-| Problem | Things to check |
-|---------|------------------|
-| DB connection | Host, port, user, password, database name, firewall |
-| Login fails | User row exists, password column holds bcrypt hash |
-| Chart empty | No rows for filters; Chart.js script loaded |
-| 404 on `/expense-tracker/` | Apache `DocumentRoot` / alias; folder name matches URLs in PHP |
+| Issue | What to check |
+|-------|----------------|
+| Database connection fails | Host, port, user, password, database name, firewall |
+| Login always fails | User exists; password column contains a bcrypt hash |
+| Chart is empty | No rows for the selected filters; Chart.js loads without errors |
+| 404 under `/expense-tracker/` | `DocumentRoot`, folder name, and hard-coded base paths in PHP |
 
 ---
 
-## Roadmap ideas
+## Roadmap
 
 - Pagination for long transaction lists  
-- Budgets / monthly targets  
+- Budgets or monthly targets  
 - PDF or Excel export  
 - Email password reset  
-- Admin / multi-tenant (if ever needed)
 
 ---
 
-## Author &amp; license
+## Author
 
-**Author:** Khondokar Ahmed Mehraz — GitHub: [itz-mehraz](https://github.com/itz-mehraz)
+**Khondokar Ahmed Mehraz** — [github.com/itz-mehraz](https://github.com/itz-mehraz)
 
-Educational / portfolio use. Add your **repository URL** and **license** (e.g. MIT) here when you publish.
+Portfolio / educational project. Add a **license** (e.g. MIT) when you publish the repository publicly.
 
 ---
 
-## Quick checklist after clone
+## Post-clone checklist
 
-1. [ ] Create DB + run SQL  
+1. [ ] Create database and run schema SQL  
 2. [ ] Edit `config/db.php`  
-3. [ ] Add `assets/images/logo.png`  
-4. [ ] Fill README `src=""` images (or relative paths)  
-5. [ ] Register user → categories → transactions  
+3. [ ] Add `assets/images/logo.png` (optional)  
+4. [ ] Commit `screenshots/*.png` if you want images on GitHub  
+5. [ ] Create user → categories → transactions  
 6. [ ] Disable `display_errors` for production  
